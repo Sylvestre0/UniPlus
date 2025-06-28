@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-native';
-import { ProfileContainer, Avatar, Name, Email, Button, ButtonText, Idade } from './profileStyle';
+import { ProfileContainer, Avatar, Name, Email, Button, ButtonText } from './profileStyle';
 import { FontAwesome } from '@expo/vector-icons';
 
 // import {WaterMask} from '../../components/Marca_D%27agua/cooporation';

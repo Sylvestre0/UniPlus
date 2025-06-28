@@ -1,5 +1,5 @@
-import ForgotPasswordScreen from "@/screens/forgotPassword/ForgotPasswordScreen";
+import MeuVideoScreen from "@/screens/screenVideo/ScreenEstudo";
 
-export default function ForgotPassword() {
-    return <ForgotPasswordScreen/>
+export default function HomeScreenFork() {
+    return <MeuVideoScreen/>
 }
