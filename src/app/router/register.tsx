@@ -1,5 +1,5 @@
-import CadastroUsuarioScreen from "@/screens/registerScreen/register";
+import RegisterScreen from "@/screens/registerScreen/register";
 
 export default function Cadastro() {
-    return <CadastroUsuarioScreen/>
+    return <RegisterScreen/>
 }

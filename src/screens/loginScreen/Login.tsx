@@ -1,23 +1,53 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Text } from 'react-native';
+import { router } from 'expo-router';
+
 import { Logo } from "@/components/Logo/Logo.style";
 import Password from "@/components/Inputs/PassWord";
-import Email from "@/components/Inputs/Email";
+import Email, { EmailRef } from "@/components/Inputs/Email";
 import { Login, Personbottom } from "@/components/bottom/bottomInput";
 import { WaterMask } from "@/components/Marca_D'agua/cooporation";
-import { router } from 'expo-router';
-import { Text, Alert } from 'react-native';
-import {API} from '@/services/api';
-import { Container, ForgotPassword, ForgotText, RegisterButton, RegisterText } from './login.styled';
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function   LoginScreen() {
 
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
 
+import {
+  Container,
+  ForgotPassword,
+  ForgotText,
+  RegisterButton,
+  RegisterText
+} from './login.styled';
+
+import { API } from '@/services/api';
+import CustomAlert from "@/components/CustomAlert/CustomAlert";
+
+export default function LoginScreen() {
+  const emailRef = useRef<EmailRef>(null);
+  const passwordRef = useRef<EmailRef>(null);
+
+  // Estados do alerta
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertTitle, setAlertTitle] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState<'success' | 'error'>('error');
+
+  // Função para exibir alerta
+  const showCustomAlert = (
+    title: string,
+    message: string,
+    type: 'success' | 'error' = 'error'
+  ) => {
+    setAlertTitle(title);
+    setAlertMessage(message);
+    setAlertType(type);
+    setShowAlert(true);
+  };
+
+  // Função de login
   const handleLogin = async () => {
-    const DevMode = false
-    if (DevMode == true) {
-      router.navigate('/router/home');
+    const DevMode = false;
+    if (DevMode) {
       return;
     }
 
@@ -25,7 +55,7 @@ export default function   LoginScreen() {
     const password = passwordRef.current?.getValue();
 
     if (!email?.trim() || !password?.trim()) {
-      Alert.alert("Erro", "Preencha todos os campos.");
+      showCustomAlert("Erro", "Preencha todos os campos.", "error");
       return;
     }
 
@@ -33,13 +63,15 @@ export default function   LoginScreen() {
       const response = await API.post('/login', { email, password });
 
       if (response.status === 200) {
-        Alert.alert("Sucesso", "Login realizado!");
-        router.navigate('/router/(Navigations)/home');
+        showCustomAlert("✅ Sucesso", "Login realizado com sucesso!", "success");
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 1500);
       }
     } catch (error) {
       const status = error.response?.status;
-      const mensagem = error.response?.data?.error; 
-      Alert.alert(`Erro: ${mensagem} status-Code: ${status}`);
+      const mensagem = error.response?.data?.error;
+      showCustomAlert(`Erro ${status}`, mensagem || "Erro inesperado", "error");
     }
   };
 
@@ -54,7 +86,14 @@ export default function   LoginScreen() {
       </ForgotPassword>
 
       <Personbottom onPress={handleLogin}>
+           <FontAwesome
+                  name="sign-in"
+                  size={16}
+                  color="#fff"
+                  style={{ marginRight: 8 }}
+                />
         <Login>Login</Login>
+        
       </Personbottom>
 
       <Text> ou </Text>
@@ -64,6 +103,15 @@ export default function   LoginScreen() {
       </RegisterButton>
 
       <WaterMask>©Sylvester Coop</WaterMask>
+
+      {/* Alerta customizado reutilizável */}
+      <CustomAlert
+        show={showAlert}
+        title={alertTitle}
+        message={alertMessage}
+        type={alertType}
+        onConfirm={() => setShowAlert(false)}
+      />
     </Container>
   );
 }

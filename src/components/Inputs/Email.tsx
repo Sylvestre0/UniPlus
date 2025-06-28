@@ -1,9 +1,13 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { InputText, Container, Props } from '@/components/Inputs/style';
 
-const Email = forwardRef(({
-  placeholder = "Digite seu email:"
-}: Props, ref) => {
+// Tipo da ref que será exposta
+export interface EmailRef {
+  getValue: () => string;
+}
+
+// Tipagem explícita no forwardRef
+const Email = forwardRef<EmailRef, Props>(({ placeholder = "Digite seu email:" }, ref) => {
   const [text, setText] = useState('');
 
   useImperativeHandle(ref, () => ({
@@ -11,7 +15,7 @@ const Email = forwardRef(({
   }));
 
   return (
-    <Container> 
+    <Container>
       <InputText
         placeholder={placeholder}
         value={text}

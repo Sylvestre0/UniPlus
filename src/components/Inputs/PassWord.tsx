@@ -1,7 +1,8 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { InputText, Container, Props } from '@/components/Inputs/style';
+import { EmailRef } from "./Email";
 
-const Password = forwardRef(({ placeholder = "Digite sua senha:" }: Props, ref) => {
+const Password = forwardRef<EmailRef, Props>(({ placeholder = "Digite sua senha:" }: Props, ref) => {
   const [text, setText] = useState('');
 
   useImperativeHandle(ref, () => ({

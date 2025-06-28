@@ -1,11 +1,8 @@
-import { LinearGradient } from "expo-linear-gradient";
+import { View } from "react-native";
 import styled from "styled-components/native";
+import { TouchableOpacity } from "react-native";
 
-export const Container = styled(LinearGradient).attrs({
-  colors: ['#4840dd', '#8080f2', '#00d4ff'],
-  start: { x: 0, y: 0 },
-  end: { x: 0, y: 1 },
-})`
+export const Container = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -13,10 +10,15 @@ export const Container = styled(LinearGradient).attrs({
 `;
 
 export const RegisterButton = styled.TouchableOpacity`
-  background-color: rgba(23, 212, 6, 0.81);
+  background-color: #17d406;
   padding: 12px 24px;
   border-radius: 10px;
   margin-top: 16px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
 `;
 
 export const RegisterText = styled.Text`

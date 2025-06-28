@@ -8,7 +8,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
-        <Image source={require("../../assets/images/Logo.png")} style={styles.logo} />
+        <Image source={require("../../assets/images/unifecaf-removebg-preview.png")} style={styles.logo} />
         <TouchableOpacity onPress={() => router.navigate('/router/addNewevent')}
         style={styles.addButton}>
           <Text style={styles.addButtonText}>Add New Event</Text>
