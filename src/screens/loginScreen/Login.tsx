@@ -35,7 +35,7 @@ export default function LoginScreen() {
   };
 
   const handleLogin = async () => {
-    const DevMode = false;
+    const DevMode = true;
     if (DevMode) {
       router.navigate('/router/home');
       return;

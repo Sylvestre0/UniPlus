@@ -10,6 +10,7 @@ import { Text, Alert, TouchableOpacity } from 'react-native';
 import {API} from '@/services/api';
 import { Container, RegisterButton, RegisterText, BackButton, BackText } from './registerStyle';
 import { FontAwesome } from '@expo/vector-icons';
+import CustomAlert from '@/components/CustomAlert/CustomAlert';
 
 
 export default function RegisterScreen() {
@@ -97,8 +98,6 @@ export default function RegisterScreen() {
         type={alertType}
         onConfirm={() => setShowAlert(false)}
       />
-    </Container>
-
     </Container>
     
   );
