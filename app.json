@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "UniPlus",
+    "color": "#166BAD",
+    "slug": "UniPlus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/unifecaf-removebg-preview.png",
+    "scheme": "teste",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/images/unifecaf-removebg-preview.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./src/assets/images/unifecaf-removebg-preview.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/images/unifecaf-removebg-preview.png",
+          "imageWidth": 200,
+          "resizeMode": "cover",
+          "backgroundColor": "#ffffff"
+          
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
