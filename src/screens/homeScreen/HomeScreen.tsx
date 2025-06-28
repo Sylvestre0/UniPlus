@@ -1,7 +1,8 @@
 // HomeScreen.js
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import React from "react";
 import ImageCard from "@/components/card/card";
+const router = useRouter();
 
 // importe os componentes estilizados
 import {
@@ -24,12 +25,12 @@ export default function HomeScreen() {
       />
             <ImageCard
         imageSource={{ uri: 'https://hermes.dio.me/articles/cover/68aa896c-0660-4a60-a1d4-c512ce8cf2ab.png' }}
-        onPress={() => router.push('/router/login')}
+        onPress={() => router.push('/router/forgot-password')}
         caption="Gatinho estiloso com styled-components 😻"
       />
             <ImageCard
         imageSource={{ uri: 'https://media.licdn.com/dms/image/v2/D4D12AQEmxmyTkrPGbw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1690674031231?e=2147483647&v=beta&t=Xd4uSkVfRWWT1c0wMWFzysavRDoyJ8Nhcnyky_zhokk' }}
-        onPress={() => router.push('/router/login')}
+        onPress={() => router.push('/router/index')}
         caption="Gatinho estiloso com styled-components 😻"
       />
     </Container>
