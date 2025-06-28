@@ -9,15 +9,7 @@ import { Login, Personbottom } from "@/components/bottom/bottomInput";
 import { WaterMask } from "@/components/Marca_D'agua/cooporation";
 import { FontAwesome } from '@expo/vector-icons';
 
-
-
-import {
-  Container,
-  ForgotPassword,
-  ForgotText,
-  RegisterButton,
-  RegisterText
-} from './login.styled';
+import {Container,ForgotPassword,ForgotText,RegisterButton,RegisterText} from './login.styled';
 
 import { API } from '@/services/api';
 import CustomAlert from "@/components/CustomAlert/CustomAlert";
@@ -26,13 +18,11 @@ export default function LoginScreen() {
   const emailRef = useRef<EmailRef>(null);
   const passwordRef = useRef<EmailRef>(null);
 
-  // Estados do alerta
   const [showAlert, setShowAlert] = useState(false);
   const [alertTitle, setAlertTitle] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState<'success' | 'error'>('error');
 
-  // Função para exibir alerta
   const showCustomAlert = (
     title: string,
     message: string,
@@ -44,10 +34,10 @@ export default function LoginScreen() {
     setShowAlert(true);
   };
 
-  // Função de login
   const handleLogin = async () => {
     const DevMode = false;
     if (DevMode) {
+      router.navigate('/router/home');
       return;
     }
 
@@ -86,12 +76,12 @@ export default function LoginScreen() {
       </ForgotPassword>
 
       <Personbottom onPress={handleLogin}>
-           <FontAwesome
-                  name="sign-in"
-                  size={16}
-                  color="#fff"
-                  style={{ marginRight: 8 }}
-                />
+        <FontAwesome
+          name="sign-in"
+          size={16}
+          color="#fff"
+          style={{ marginRight: 8 }}
+            />
         <Login>Login</Login>
         
       </Personbottom>
@@ -104,7 +94,6 @@ export default function LoginScreen() {
 
       <WaterMask>©Sylvester Coop</WaterMask>
 
-      {/* Alerta customizado reutilizável */}
       <CustomAlert
         show={showAlert}
         title={alertTitle}
