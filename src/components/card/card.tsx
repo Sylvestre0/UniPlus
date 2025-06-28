@@ -1,25 +1,25 @@
 // ImageCard.js
 import React from 'react';
-import { Dimensions, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const screenWidth = Dimensions.get('window').width;
-
 const Container = styled.View`
+  width: 100%;
   margin-vertical: 10px;
-  align-items: center;
 `;
 
 const StyledImage = styled.Image`
-  width: ${screenWidth}px;
+  width: 100%;
   height: 200px;
+  border-radius: 10px;
 `;
 
 const Caption = styled.Text`
   margin-top: 8px;
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
-  text-align: center;
+  text-align: left;
+  padding-horizontal: 12px;
 `;
 
 const ImageCard = ({ imageSource, onPress, caption }) => {
